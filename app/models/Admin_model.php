@@ -15,7 +15,11 @@
         public function getLibrarianByID($id) {
             $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id_petugas = :id');
             $this->db->bind('id', $id);
-            return $this->db->single();
+            $result = $this->db->single();
+
+            $result['tgl_lahir'] = date('d-m-Y', strtotime($result['tgl_lahir']));
+
+            return $result;
         }
 
         public function addDataLibrarian($data) {
@@ -47,6 +51,8 @@
         }
 
         public function changeLibrarian($data) {
+            $dateBirth = date("Y-m-d", strtotime($data['dateBorn']));
+
             $query = "UPDATE librarian SET
                         username = :email,
                         pass = :pass,
@@ -62,7 +68,7 @@
             $this->db->bind('pass', $data['pass']);
             $this->db->bind('nama', $data['nama']);
             $this->db->bind('roles', $data['roles']);
-            $this->db->bind('dateBorn', $data['dateBorn']);
+            $this->db->bind('dateBorn', $dateBirth);
             $this->db->bind('phoneNumber', $data['phoneNumber']);
             $this->db->bind('addrss', $data['addrss']);
             $this->db->bind('id_petugas', $data['id_petugas']);

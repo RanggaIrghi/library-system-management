@@ -130,15 +130,15 @@ $(function() {
             success: function(data) {
                 if(type === 'getUser') {
                     $('#nameDetail').html("Name: " + data.fullname);
-                    $('#dateBornDetail').html("Date Born: " + data.tgl_lahir);
+                    $('#dateBornDetail').html("Date of Birth: " + data.tgl_lahir);
                     $('#phoneNumberDetail').html("Number: " + data.no_hp);
                     $('#addrssDetail').html("Address: " + data.alamat);
                     $('#idDetail').html("NIK: " + data.nik);
                 } else if(type === 'getData') {
                     $('#nameDetail').html("Name: " + data.nama);
                     $('#emailDetal').html("Email: " + data.username);
-                    $('#dateBornDetail').html("Date Born: " + data.tgl_lahir);
-                    $('#phoneNumberDetail').html("Number" + data.telp);
+                    $('#dateBornDetail').html("Date of Birth: " + data.tgl_lahir);
+                    $('#phoneNumberDetail').html("Number: " + data.telp);
                     $('#addrssDetail').html("Address" + data.alamat);
                     $('#rolesDetail').html("Role: " + data.jabatan);
                     $('#idDetail').html("Librarian ID: " + data.id_petugas);
@@ -153,6 +153,8 @@ $(function() {
                     $('#titleDetail').html("Title: " + data.judul);
                     $('#fullnmDetail').html("Name: " + data.fullname);
                     $('#categoryDetail').html("Category: " + data.kategori);
+                    $('#borrDetail').html("Borrowed: " + data.tnggl_pinjam);
+                    $('#dueDetail').html("Due: " + data.bts_pinjam);
                     $('#penulisDetail').html("Writer: " + data.penulis);
                     $('#petugasDetail').html("Librarian: " + data.nama);
                     $('#idpinjamDetail').html("ID: " + data.id_pinjam);

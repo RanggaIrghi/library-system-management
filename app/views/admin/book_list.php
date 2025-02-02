@@ -103,7 +103,7 @@
                         <div class="relative bg-white rounded-lg shadow px-4 pb-4 modal-body">
                             <div class="flex items-center justify-start p-8 border-b-2 border-black">
                                 <i data-feather="info" class="w-8 h-8"></i>
-                                <h2 class="text-2xl ms-3" id="formLabel">Detail Librarian</h2>
+                                <h2 class="text-2xl ms-3" id="formLabel">Detail Book</h2>
                             </div>
                             <div class="p-4 border my-4 rounded-lg text-lg text-left">
                                 <p class="border-b mb-6 px-2" id="idDetail" name="idDetail">Book Code: </p>

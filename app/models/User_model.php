@@ -9,13 +9,23 @@
 
         public function getAllUser() {
             $this->db->query('SELECT * FROM ' . $this->table);
-            return $this->db->resultSet();
+            $results = $this->db->resultSet();
+
+            foreach ($results as &$row) {
+                $row['tgl_lahir'] = date('d-m-Y', strtotime($row['tgl_lahir']));
+            } 
+
+            return $results;
         }
 
         public function getUsersByID($id) {
             $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id_user = :id');
             $this->db->bind('id', $id);
-            return $this->db->single();
+            $result = $this->db->single();
+
+            $result['tgl_lahir'] = date('d-m-Y', strtotime($result['tgl_lahir']));
+
+            return $result;
         }
 
         public function addDataUser($data) {

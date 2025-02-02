@@ -19,8 +19,16 @@
                         JOIN `user` ON peminjaman.id_user = `user`.id_user
                         JOIN books ON peminjaman.kode_buku = books.kode_buku
                         JOIN librarian ON peminjaman.id_petugas = librarian.id_petugas";
+
             $this->db->query($query);
-            return $this->db->resultSet();
+            $results = $this->db->resultSet();
+
+            foreach ($results as &$row) {
+                $row['tnggl_pinjam'] = date('d-m-Y', strtotime($row['tnggl_pinjam']));
+                $row['bts_pinjam'] = date('d-m-Y', strtotime($row['bts_pinjam']));
+            } 
+
+            return $results;
         }
 
         public function getBorrowedByID($id) {
@@ -38,9 +46,15 @@
                         JOIN books ON peminjaman.kode_buku = books.kode_buku
                         JOIN librarian ON peminjaman.id_petugas = librarian.id_petugas
                         WHERE peminjaman.id_pinjam = :id";
+                        
             $this->db->query($query);
             $this->db->bind('id', $id);
-            return $this->db->single();
+            $result = $this->db->single();
+
+            $result['tnggl_pinjam'] = date('d-m-Y', strtotime($result['tnggl_pinjam']));
+            $result['bts_pinjam'] = date('d-m-Y', strtotime($result['bts_pinjam']));
+
+            return $result;
         }
 
         public function addCatalog($data) {

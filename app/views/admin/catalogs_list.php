@@ -76,11 +76,11 @@
                                     <?php endforeach; ?>
                                 </select>
                                 <div class="relative mt-4 mb-4">
-                                    <input type="date" name="borrDate" id="borrDate" class="block rounded-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-black border-black ring-2 ring-black" placeholder=" "/>
+                                    <input type="text" name="borrDate" id="borrDate" class="h-12 block rounded-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-black border-black ring-2 ring-black" placeholder="d-m-Y"/>
                                     <label for="borrDate" class="absolute text-sm text-black duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Borrow Date</label>
                                 </div>
-                                <div class="relative mt-4">
-                                    <input type="date" name="dueDate" id="dueDate" class="block rounded-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-black border-black ring-2 ring-black" placeholder=" "/>
+                                <div class="relative mt-8">
+                                    <input type="text" name="dueDate" id="dueDate" class="h-12 block rounded-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-black border-black ring-2 ring-black" placeholder="d-m-Y "/>
                                     <label for="dueDate" class="absolute text-sm text-black duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Due Date</label>
                                 </div>
                                 <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h8 ms-auto inline-flex justify-center items-center" data-modal-hide=
@@ -131,6 +131,8 @@
                                 <p class="border-b mb-6 px-2" id="fullnmDetail" name="fullnmDetail">Name: </p>
                                 <p class="border-b mb-6 px-2" id="titleDetail" name="titleDetail">Title: </p>
                                 <p class="border-b mb-6 px-2" id="categoryDetail" name="emailDetal">Category: </p>
+                                <p class="border-b mb-6 px-2" id="borrDetail" name="emailDetal">Borrowed: </p>
+                                <p class="border-b mb-6 px-2" id="dueDetail" name="emailDetal">Due: </p>
                                 <p class="border-b mb-6 px-2" id="penulisDetail" name="rolesDetail">Writer: </p>
                                 <p class="border-b mb-6 px-2" id="petugasDetail" name="phoneNumberDetail">Librarian: </p>
                             </div>

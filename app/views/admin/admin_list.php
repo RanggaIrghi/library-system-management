@@ -63,7 +63,7 @@
                                     <input type="text" class="w-full h-12 my-4 px-4 rounded-lg ring-2 ring-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" id="roles" name="roles"  placeholder="Role">
                                 </div>
                                 <div class="flex items-center justify-center gap-4">
-                                    <input type="text" class="w-full h-12 my-4 px-4 rounded-lg ring-2 ring-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" id="dateBorn" name="dateBorn"  placeholder="Tanggal Lahir">
+                                    <input type="text" class="w-full h-12 my-4 px-4 rounded-lg ring-2 ring-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" id="dateBorn" name="dateBorn"  placeholder="Date Of Birth">
                                     <input type="text" class="w-full h-12 my-4 px-4 rounded-lg ring-2 ring-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" id="phoneNumber" name="phoneNumber" placeholder="Telp">
                                 </div>
                                 <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h8 ms-auto inline-flex justify-center items-center" data-modal-hide=
@@ -113,7 +113,7 @@
                                 <p class="border-b mb-6 px-2" id="idDetail" name="idDetail">User ID: </p>
                                 <p class="border-b mb-6 px-2" id="nameDetail" name="nameDetail">Name: </p>
                                 <p class="border-b mb-6 px-2" id="emailDetal" name="emailDetal">Username: </p>
-                                <p class="border-b mb-6 px-2" id="dateBornDetail" name="dateBornDetail">Date Born: </p>
+                                <p class="border-b mb-6 px-2" id="dateBornDetail" name="dateBornDetail">Date of Birth: </p>
                                 <p class="border-b mb-6 px-2" id="rolesDetail" name="rolesDetail">Role: </p>
                                 <p class="border-b mb-6 px-2" id="phoneNumberDetail" name="phoneNumberDetail">Number: </p>
                                 <p class="border-b px-2" id="addrssDetail" name="addrssDetail">Address: </p>
