@@ -100,7 +100,7 @@ $(function() {
                     $('#addrss').val(data.alamat);
                     $('#roles').val(data.jabatan);
                     $('#id_petugas').val(data.id_petugas);
-                } else if(type === 'getBook')
+                } else if(type === 'getBook') {
                     $('.modal-body form').attr('action', 'http://localhost/library-management-system/public/admin/changeBook')
                     $('#title').val(data.judul);
                     $('#category').val(data.kategori);
@@ -108,6 +108,14 @@ $(function() {
                     $('#penulis').val(data.penulis);
                     $('#penerbit').val(data.penerbit);
                     $('#id').val(data.kode_buku);
+                } else if(type === 'getBorrow') {
+                    $('.modal-body form').attr('action', 'http://localhost/library-management-system/public/admin/changeCatalog')
+                    $('#bookId').html(data.judul);
+                    $('#userId').html(data.fullname);
+                    $('#borrDate').html(data.tnggl_pinjam);
+                    $('#dueDate').html(data.bts_pinjam);
+
+                }
             }
         });
     });

@@ -33,6 +33,18 @@
             echo json_encode($this->model('Catalogs_model')->getBorrowedByID($_POST['id']));
         }
 
+        public function changeCatalog() {
+            if($this->model('Catalogs_model')->changeCatalogModel($_POST) > 0) {
+                Flasher::setFlash(' berhasil', ' diubah', 'bg-green-400');
+                header('Location: ' . BASE_URL . '/admin/catalogs_list');
+                exit;
+            } else {
+                Flasher::setFlash(' gagal', ' diubah', 'bg-red-400');
+                header('Location: ' . BASE_URL . '/admin/catalogs_list');
+                exit;
+            }
+        }
+
         public function book_list() {
             $data['judul'] = 'Admin Dashboard - Book List';
             $data['books'] = $this->model('Book_model')->getAllBook();

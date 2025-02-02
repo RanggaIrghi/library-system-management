@@ -7,6 +7,10 @@
             $this->db = new Database;
         }
 
+        public static function findByEmail($username) {
+            
+        }
+
         public function getAllCatalog() {
             $query = "SELECT 
                         peminjaman.id_pinjam,
@@ -69,6 +73,28 @@
             $this->db->bind('dueDate', $dueDate);
             $this->db->bind('bookId', $data['bookId']);
             $this->db->bind('userId', $data['userId']);
+
+            $this->db->execute();
+
+            return $this->db->rowCount();
+        }
+
+        public function changeCatalogModel($data) {
+            $query = "UPDATE " . $this->table . " SET
+                        tnggl_pinjam = :borrDate,
+                        bts_pinjam = :dueDate,
+                        kode_buku = :bookId,
+                        id_user = :userId,
+                        id_petugas = :librarianId
+                     WHERE id_pinjam = :id";
+                     
+            $this->db->query($query);
+            $this->db->bind('borrDate', $data['borrDate']);
+            $this->db->bind('dueDate', $data['dueDate']);
+            $this->db->bind('bookId', $data['bookId']);
+            $this->db->bind('userId', $data['userId']);
+            $this->db->bind('librarianId', $data['librarianId']);
+            $this->db->bind('id', $data['id']);
 
             $this->db->execute();
 

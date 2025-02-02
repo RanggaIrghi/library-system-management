@@ -29,7 +29,7 @@
         }
 
         public function addDataUser($data) {
-            $query = "INSERT INTO user (nik, fullname, tgl_lahir, no_hp, alamat)
+            $query = "INSERT INTO " . $this->table . " (nik, fullname, tgl_lahir, no_hp, alamat)
                         VALUES 
                         (:nik, :nama, :dateBorn, :phoneNumber, :addrss  )";
             $this->db->query($query);

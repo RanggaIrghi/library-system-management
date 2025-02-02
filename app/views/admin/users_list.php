@@ -1,4 +1,4 @@
-<div class="flex justify-between items-center px-5 py-6">
+            <div class="flex justify-between items-center px-5 py-6">
                 <h1 class="text-2xl font-bold">Users Management</h1>
                 <div class="flex space-x-4">
                     <button class="w-38 flex p-2 rounded-lg bg-black text-base text-white shadow-lg addNew" id="addBtn" onclick="showModal('popupModal')"><i data-feather="plus" class="w-6 h-6"></i>Add New</button>
