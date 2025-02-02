@@ -19,7 +19,7 @@
         }
 
         public function addDataUser($data) {
-            $query = "INSERT INTO user (nik, nama, tgl_lahir, no_hp, alamat)
+            $query = "INSERT INTO user (nik, fullname, tgl_lahir, no_hp, alamat)
                         VALUES 
                         (:nik, :nama, :dateBorn, :phoneNumber, :addrss  )";
             $this->db->query($query);
@@ -47,7 +47,7 @@
         public function changeUserModel($data) {
             $query = "UPDATE user SET
                         nik = :nik,
-                        nama = :nama,
+                        fullname = :nama,
                         tgl_lahir = :dateBorn,
                         no_hp = :phoneNumber,
                         alamat = :addrss
@@ -68,7 +68,7 @@
 
         public function searchUser() {
             $search = $_POST['search'];
-            $query = "SELECT * FROM user WHERE LOWER(nama) LIKE LOWER(:search) OR id_user = :searchID";
+            $query = "SELECT * FROM user WHERE LOWER(fullname) LIKE LOWER(:search) OR id_user = :searchID";
             $this->db->query($query);
             $this->db->bind('search', "%" . strtolower($search) . "%");
             $this->db->bind('searchID', $search);

@@ -19,13 +19,15 @@
         }
 
         public function addDataBook($data) {
-            $query = "INSERT INTO " . $this->table . " (judul, kategori, qty)
+            $query = "INSERT INTO " . $this->table . " (judul, kategori, qty, penulis, penerbit)
                         VALUES 
-                        (:title, :category, :qty)";
+                        (:title, :category, :qty, :penulis, :penerbit)";
             $this->db->query($query);
             $this->db->bind('title', $data['title']);
             $this->db->bind('category', $data['category']);
             $this->db->bind('qty', $data['qty']);
+            $this->db->bind('penulis', $data['penulis']);
+            $this->db->bind('penerbit', $data['penerbit']);
 
             $this->db->execute();
 

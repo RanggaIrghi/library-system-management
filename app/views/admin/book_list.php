@@ -56,15 +56,11 @@
                             <form action="<?= BASE_URL; ?>/admin/add_book" method="post">
                                 <input type="hidden" id="id" name="id">
                                 <input type="text" class="w-full h-12 my-4 px-4 rounded-lg ring-2 ring-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" id="title" name="title" placeholder="Title">
-                                <input type="text" class="w-full h-12 my-4 px-4 rounded-lg ring-2 ring-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-400 peer" id="category" name="category" placeholder="Category">
-                                <input type="number" class="w-full h-12 my-4 px-4 rounded-lg ring-2 ring-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" id="qty" name="qty" placeholder="Qty">
+                                <input type="text" class="w-full h-12 my-4 px-4 rounded-lg ring-2 ring-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" id="penulis" name="penulis"  placeholder="Penulis">
+                                <input type="text" class="w-full h-12 my-4 px-4 rounded-lg ring-2 ring-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" id="penerbit" name="penerbit"  placeholder="Penerbit">
                                 <div class="flex items-center justify-center gap-4">
-                                    <input type="text" class="w-full h-12 my-4 px-4 rounded-lg ring-2 ring-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" id="pass" name="pass"  placeholder="Password">
-                                    <input type="text" class="w-full h-12 my-4 px-4 rounded-lg ring-2 ring-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" id="roles" name="roles"  placeholder="Role">
-                                </div>
-                                <div class="flex items-center justify-center gap-4">
-                                    <input type="text" class="w-full h-12 my-4 px-4 rounded-lg ring-2 ring-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" id="dateBorn" name="dateBorn"  placeholder="Tanggal Lahir">
-                                    <input type="text" class="w-full h-12 my-4 px-4 rounded-lg ring-2 ring-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" id="phoneNumber" name="phoneNumber" placeholder="Telp">
+                                    <input type="text" class="w-full h-12 my-4 px-4 rounded-lg ring-2 ring-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-400 peer" id="category" name="category" placeholder="Category">
+                                    <input type="number" class="w-full h-12 my-4 px-4 rounded-lg ring-2 ring-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" id="qty" name="qty" placeholder="Qty">
                                 </div>
                                 <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h8 ms-auto inline-flex justify-center items-center" data-modal-hide=
                                 "popupModal" id="btnClose" onclick="closeModal('popupModal')">
@@ -112,10 +108,10 @@
                             <div class="p-4 border my-4 rounded-lg text-lg text-left">
                                 <p class="border-b mb-6 px-2" id="idDetail" name="idDetail">Book Code: </p>
                                 <p class="border-b mb-6 px-2" id="titleDetail" name="nameDetail">Title: </p>
-                                <p class="border-b mb-6 px-2" id="categoryDetal" name="emailDetal">Category: </p>
+                                <p class="border-b mb-6 px-2" id="categoryDetail" name="emailDetal">Category: </p>
                                 <p class="border-b mb-6 px-2" id="qtyDetail" name="dateBornDetail">Qty: </p>
-                                <p class="border-b mb-6 px-2" id="rolesDetail" name="rolesDetail">Role: </p>
-                                <p class="border-b mb-6 px-2" id="phoneNumberDetail" name="phoneNumberDetail">Number: </p>
+                                <p class="border-b mb-6 px-2" id="penulisDetail" name="rolesDetail">Writer: </p>
+                                <p class="border-b mb-6 px-2" id="penerbitDetail" name="phoneNumberDetail">Publisher: </p>
                             </div>
                             <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h8 ms-auto inline-flex justify-center items-center" data-modal-hide=
                                 "popupModal" id="btnClose" onclick="closeModal('detailModal')">

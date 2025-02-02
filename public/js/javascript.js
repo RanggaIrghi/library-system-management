@@ -85,7 +85,7 @@ $(function() {
                 if(type === 'getUser') {
                     $('.modal-body form').attr('action', 'http://localhost/library-management-system/public/admin/changeUser')
                     $('#nik').val(data.nik);
-                    $('#name').val(data.nama);
+                    $('#name').val(data.fullname);
                     $('#dateBorn').val(data.tgl_lahir);
                     $('#phoneNumber').val(data.no_hp);
                     $('#addrss').val(data.alamat);
@@ -105,6 +105,8 @@ $(function() {
                     $('#title').val(data.judul);
                     $('#category').val(data.kategori);
                     $('#qty').val(data.qty);
+                    $('#penulis').val(data.penulis);
+                    $('#penerbit').val(data.penerbit);
                     $('#id').val(data.kode_buku);
             }
         });
@@ -120,7 +122,6 @@ $(function() {
     $('.detailModal').on('click', function() {
         const id = $(this).data('id');
         const type = $(this).data('type');
-
         $.ajax({
             url: `http://localhost/library-management-system/public/admin/${type}`,
             data: {id : id, type: type},
@@ -128,7 +129,7 @@ $(function() {
             dataType: 'json',
             success: function(data) {
                 if(type === 'getUser') {
-                    $('#nameDetail').html("Name: " + data.nama);
+                    $('#nameDetail').html("Name: " + data.fullname);
                     $('#dateBornDetail').html("Date Born: " + data.tgl_lahir);
                     $('#phoneNumberDetail').html("Number: " + data.no_hp);
                     $('#addrssDetail').html("Address: " + data.alamat);
@@ -143,9 +144,18 @@ $(function() {
                     $('#idDetail').html("Librarian ID: " + data.id_petugas);
                 } else if(type === 'getBook') {
                     $('#titleDetail').html("Title: " + data.judul);
-                    $('#categoryDetal').html("Category: " + data.kategori);
+                    $('#categoryDetail').html("Category: " + data.kategori);
                     $('#qtyDetail').html("Qty: " + data.qty);
+                    $('#penulisDetail').html("Writer: " + data.penulis);
+                    $('#penerbitDetail').html("Publisher: " + data.penerbit);
                     $('#idDetail').html("Book Code: " + data.kode_buku);
+                } else if(type === 'getBorrow') {
+                    $('#titleDetail').html("Title: " + data.judul);
+                    $('#fullnmDetail').html("Name: " + data.fullname);
+                    $('#categoryDetail').html("Category: " + data.kategori);
+                    $('#penulisDetail').html("Writer: " + data.penulis);
+                    $('#petugasDetail').html("Librarian: " + data.nama);
+                    $('#idpinjamDetail').html("ID: " + data.id_pinjam);
                 }
             }
         });

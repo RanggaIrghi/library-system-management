@@ -19,7 +19,7 @@
         }
 
         public function addDataLibrarian($data) {
-            $query = "INSERT INTO librarian (username, password, nama, jabatan, tgl_lahir, telp, alamat)
+            $query = "INSERT INTO librarian (username, pass, nama, jabatan, tgl_lahir, telp, alamat)
                         VALUES 
                         (:email, :pass, :nama, :roles, :dateBorn, :phoneNumber, :addrss  )";
             $this->db->query($query);

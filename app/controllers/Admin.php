@@ -9,10 +9,28 @@
 
         public function catalogs_list() {
             $data['judul'] = "Admin Dashboard - Catalogs List";
-            // $data['catalogs'] = $this->model('Catalogs_model')->getAllCatalog();
+            $data['peminjaman'] = $this->model('Catalogs_model')->getAllCatalog();
+            $data['books'] = $this->model('Book_model')->getAllBook();
+            $data['user'] = $this->model('User_model')->getAllUser();
             $this->view('templates/header', $data);
-            $this->view('admin/catalogs_list');
+            $this->view('admin/catalogs_list', $data);
             $this->view('templates/footer');
+        }
+
+        public function add_new_catalog() {
+            if($this->model('Catalogs_model')->addCatalog($_POST) > 0) {
+                Flasher::setFlash(' berhasil', ' ditambahkan', 'bg-green-400');
+                header('Location: ' . BASE_URL . '/admin/catalogs_list');
+                exit;
+            } else {
+                Flasher::setFlash(' gagal', ' ditambahkan', 'bg-red-400');
+                header('Location: ' . BASE_URL . '/admin/catalogs_list');
+                exit;
+            }
+        }
+
+        public function getBorrow() {
+            echo json_encode($this->model('Catalogs_model')->getBorrowedByID($_POST['id']));
         }
 
         public function book_list() {
