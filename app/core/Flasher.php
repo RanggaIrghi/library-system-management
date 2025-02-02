@@ -16,7 +16,9 @@
                     <i data-feather="x" class="hover:bg-slate-300 rounded-lg"></i>
                 </button>
               </div>';
+              
               unset($_SESSION['flash']);
+              session_write_close();
             }
         }
     }

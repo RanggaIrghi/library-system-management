@@ -1,3 +1,7 @@
+<?php
+    require_once '../app/core/Auth.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +25,7 @@
                 <a href="<?= BASE_URL; ?>/admin/admin_list" class="w-full flex items-center px-6 py-2"><i data-feather="briefcase" class="w-5 h-5"></i><span class="ms-3">Librarian</span></a>
             </div>
             <div class="flex items-center justify-center py-24">
-                <a href="<?= BASE_URL; ?>" class="w-full flex items-center px-6 py-2"><i data-feather="log-out" class="w-5 h-5"></i><span class="ms-3">Log Out</span></a>
+                <a href="<?= BASE_URL; ?>/home/logout" class="w-full flex items-center px-6 py-2"><i data-feather="log-out" class="w-5 h-5"></i><span class="ms-3">LOG OUT</span></a>
             </div>
         </nav>
         <div class="w-full flex flex-col text-center">
