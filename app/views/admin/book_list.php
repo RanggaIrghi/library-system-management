@@ -50,7 +50,7 @@
                     <div class="relative p-4 w-full max-w-xl max-h-full">
                         <div class="relative bg-white rounded-lg shadow px-4 modal-body">
                             <div class="flex items-center justify-start p-8 border-b-2 border-black">
-                                <i data-feather="book-open" class="w-8 h-8"></i>
+                                <i data-feather="book" class="w-8 h-8"></i>
                                 <h2 class="text-2xl ms-3" id="formLabel">Add New</h2>
                             </div>
                             <form action="<?= BASE_URL; ?>/admin/add_book" method="post">

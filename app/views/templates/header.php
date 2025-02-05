@@ -19,8 +19,9 @@
             <div class="flex flex-col justify-center items-center space-y-12">
                 <div class="h-12 text-2xl">LIBRARY LOGO</div>
                 <a href="<?= BASE_URL; ?>/admin" class="w-full flex items-center px-6 py-2"><i data-feather="grid" class="w-5 h-5"></i><span class="ms-3">Dashboard</span></a>
-                <a href="<?= BASE_URL; ?>/admin/catalogs_list" class="w-full flex items-center px-6 py-2"><i data-feather="archive" class="w-5 h-5"></i><span class="ms-3">Catalog</span></a>
-                <a href="<?= BASE_URL; ?>/admin/book_list" class="w-full flex items-center px-6 py-2"><i data-feather="book-open" class="w-5 h-5"></i><span class="ms-3">Books</span></a>
+                <a href="<?= BASE_URL; ?>/admin/borrowed_list" class="w-full flex items-center px-6 py-2"><i data-feather="book-open" class="w-5 h-5"></i><span class="ms-3">Borrowed</span></a>
+                <a href="<?= BASE_URL; ?>/admin/returned_list" class="w-full flex items-center px-6 py-2"><i data-feather="archive" class="w-5 h-5"></i><span class="ms-3">Returned</span></a>
+                <a href="<?= BASE_URL; ?>/admin/book_list" class="w-full flex items-center px-6 py-2"><i data-feather="book" class="w-5 h-5"></i><span class="ms-3">Books</span></a>
                 <a href="<?= BASE_URL; ?>/admin/users_list" class="w-full flex items-center px-6 py-2"><i data-feather="users" class="w-5 h-5"></i><span class="ms-3">Users</span></a>
                 <a href="<?= BASE_URL; ?>/admin/admin_list" class="w-full flex items-center px-6 py-2"><i data-feather="briefcase" class="w-5 h-5"></i><span class="ms-3">Librarian</span></a>
             </div>
@@ -33,8 +34,8 @@
                 <div class="text-base">
                     <img src="" alt="" class="">
                     <div class="text-left">
-                        <h2 class="text-xl">Mohammad Rangga Irghivya</h2>
-                        <p class="text-sm">Admin</p>
+                        <h2 class="text-xl"><?= $_SESSION['nama']; ?></h2>
+                        <p class="text-sm"><?= $_SESSION['role']; ?></p>
                     </div>
                 </div>
                 <div class="text-right">

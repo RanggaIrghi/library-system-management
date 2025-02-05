@@ -5,6 +5,7 @@
 
         public function __construct() {
             $this->db = new Database;
+            if(!session_id()) session_start();
         }
 
         public function getAllBook() {
@@ -16,6 +17,13 @@
             $this->db->query('SELECT * FROM ' . $this->table . ' WHERE kode_buku = :id');
             $this->db->bind('id', $id);
             return $this->db->single();
+        }
+
+        public function updateBookStock($kode_buku) {
+            $query = "UPDATE books SET qty = qty + 1 WHERE kode_buku = :kode_buku";
+            $this->db->query($query);
+            $this->db->bind(':kode_buku', $kode_buku);
+            return $this->db->execute();
         }
 
         public function addDataBook($data) {

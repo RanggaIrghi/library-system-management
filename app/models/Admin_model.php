@@ -5,6 +5,7 @@
 
         public function __construct() {
             $this->db = new Database;
+            if(!session_id()) session_start();
         }
 
         public function getAllLibrarian() {

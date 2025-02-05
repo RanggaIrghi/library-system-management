@@ -5,6 +5,7 @@
 
         public function __construct() {
             $this->db = new Database;
+            if(!session_id()) session_start();
         }
 
         public function getAllUser() {
@@ -55,6 +56,8 @@
         } 
 
         public function changeUserModel($data) {
+            $dateBirt = date("Y-m-d", strtotime($data['dateBorn']));
+
             $query = "UPDATE user SET
                         nik = :nik,
                         fullname = :nama,
@@ -66,7 +69,7 @@
             $this->db->query($query);
             $this->db->bind('nik', $data['nik']);
             $this->db->bind('nama', $data['nama']);
-            $this->db->bind('dateBorn', $data['dateBorn']);
+            $this->db->bind('dateBorn', $dateBirt);
             $this->db->bind('phoneNumber', $data['phoneNumber']);
             $this->db->bind('addrss', $data['addrss']);
             $this->db->bind('id_user', $data['id_user']);

@@ -7,42 +7,94 @@
             $this->view('templates/footer');
         }
 
-        public function catalogs_list() {
-            $data['judul'] = "Admin Dashboard - Catalogs List";
-            $data['peminjaman'] = $this->model('Catalogs_model')->getAllCatalog();
+        public function borrowed_list() {
+            $data['judul'] = "Admin Dashboard - Borrowed List";
+            $data['peminjaman'] = $this->model('Borrowed_model')->getAllBorrowed();
+            $data['dueDate'] = $this->model('Borrowed_model')->getAllDue();
             $data['books'] = $this->model('Book_model')->getAllBook();
             $data['user'] = $this->model('User_model')->getAllUser();
             $this->view('templates/header', $data);
-            $this->view('admin/catalogs_list', $data);
+            $this->view('admin/borrowed_list', $data);
             $this->view('templates/footer');
         }
 
-        public function add_new_catalog() {
-            if($this->model('Catalogs_model')->addCatalog($_POST) > 0) {
+        public function returnedBook() {
+            if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                header('Content-Type: application/json'); // Set header JSON
+        
+                $id = $_POST['id'] ?? null;
+                if (!$id) {
+                    echo json_encode(['success' => false, 'message' => 'ID tidak diterima']);
+                    return;
+                }
+        
+                $model = $this->model('Borrowed_model');
+                $borrowed = $model->getBorrowedById($id);
+        
+                if (!$borrowed) {
+                    echo json_encode(['success' => false, 'message' => 'Data peminjaman tidak ditemukan']);
+                    return;
+                }
+        
+                // Pindahkan ke tabel pengembalian
+                if ($this->model('Returned_model')->returnedBook($borrowed) > 0) {
+                    // Update stok buku
+                    $this->model('Book_model')->updateBookStock($borrowed['kode_buku']);
+        
+                    // Hapus dari tabel peminjaman
+                    $model->deleteBorrowed($id);
+        
+                    echo json_encode(['success' => true, 'message' => 'Buku berhasil dikembalikan']);
+                    return;
+                }
+            }
+        
+            echo json_encode(['success' => false, 'message' => 'Gagal mengembalikan buku']);
+        }
+        
+
+        public function returned_list() {
+            $data['judul'] = "Admin Dashboard - Returned List";
+            $data['pengembalian'] = $this->model('Returned_model')->getAllReturned();
+            $this->view('templates/header', $data);
+            $this->view('admin/returned_list', $data);
+            $this->view('templates/footer');
+        }
+
+        public function add_new() {
+            if($this->model('Borrowed_model')->addCatalog($_POST) > 0) {
                 Flasher::setFlash(' berhasil', ' ditambahkan', 'bg-green-400');
-                header('Location: ' . BASE_URL . '/admin/catalogs_list');
+                header('Location: ' . BASE_URL . '/admin/borrowed_list');
                 exit;
             } else {
                 Flasher::setFlash(' gagal', ' ditambahkan', 'bg-red-400');
-                header('Location: ' . BASE_URL . '/admin/catalogs_list');
+                header('Location: ' . BASE_URL . '/admin/borrowed_list');
+                exit;
+            }
+        }
+
+        public function delete_borrowed($id) {
+            if($this->model('Borrowed_model')->deleteDataBorrow($id) > 0) {
+                Flasher::setFlash(' berhasil', ' dihapus', 'bg-green-400');
+                header('Location: ' . BASE_URL . '/admin/borrowed_list');
+                exit;
+            } else {
+                Flasher::setFlash(' gagal', ' dihapus', 'bg-red-400');
+                header('Location: ' . BASE_URL . '/admin/borrowed_list');
                 exit;
             }
         }
 
         public function getBorrow() {
-            echo json_encode($this->model('Catalogs_model')->getBorrowedByID($_POST['id']));
+            echo json_encode($this->model('Borrowed_model')->getBorrowedByID($_POST['id']));
         }
 
-        public function changeCatalog() {
-            if($this->model('Catalogs_model')->changeCatalogModel($_POST) > 0) {
-                Flasher::setFlash(' berhasil', ' diubah', 'bg-green-400');
-                header('Location: ' . BASE_URL . '/admin/catalogs_list');
-                exit;
-            } else {
-                Flasher::setFlash(' gagal', ' diubah', 'bg-red-400');
-                header('Location: ' . BASE_URL . '/admin/catalogs_list');
-                exit;
-            }
+        public function searchBorrowed() {
+            $data['judul'] = 'Admin Dashboard - Catalog List';
+            $data['peminjaman'] = $this->model('Borrowed_model')->searchBorrowed();
+            $this->view('templates/header', $data);
+            $this->view('admin/borrowed_list', $data);
+            $this->view('templates/footer');
         }
 
         public function book_list() {

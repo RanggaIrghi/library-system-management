@@ -70,7 +70,7 @@ $(function() {
     });
 
     $('.changeModal').on('click', function() {
-        $('#formLabel').html('Change');
+        $('#formLabel').html('Update');
         $('.modal-footer button[type=submit]').html('Change');
 
         const id = $(this).data('id');
@@ -78,7 +78,7 @@ $(function() {
 
         $.ajax({
             url: `http://localhost/library-management-system/public/admin/${type}`,
-            data: {id : id},
+            data: {id : id, type: type},
             method: 'post',
             dataType: 'json',
             success: function(data) {
@@ -109,16 +109,42 @@ $(function() {
                     $('#penerbit').val(data.penerbit);
                     $('#id').val(data.kode_buku);
                 } else if(type === 'getBorrow') {
-                    $('.modal-body form').attr('action', 'http://localhost/library-management-system/public/admin/changeCatalog')
-                    $('#bookId').html(data.judul);
-                    $('#userId').html(data.fullname);
-                    $('#borrDate').html(data.tnggl_pinjam);
-                    $('#dueDate').html(data.bts_pinjam);
+                    $('.modal-body form').attr('action', 'http://localhost/library-management-system/public/admin/updateCatalog')
+                    $('#bookId').val(data.judul);
+                    $('#userId').val(data.fullname);
+                    $('#borrDate').val(data.tnggl_pinjam);
+                    $('#dueDate').val(data.bts_pinjam);
 
                 }
             }
         });
     });
+
+    $('.checkModal').on('click', function() {
+        const id = $(this).data('id');
+    
+        $('#returnBtn').off('click').on('click', function() {
+            $.ajax({
+                url: 'http://localhost/library-management-system/public/admin/returnedBook',
+                type: 'POST',
+                data: { id: id },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) {
+                        alert(response.message); // Tampilkan pesan sukses
+                        location.reload(); // Reload halaman setelah berhasil
+                    } else {
+                        alert('Error: ' + response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX Error:', xhr.responseText);
+                    alert('Terjadi kesalahan, silakan coba lagi.');
+                }
+            });
+        });
+    });
+    
 
     $('.DeleteModal').on('click', function() {
         const id = $(this).data('id');

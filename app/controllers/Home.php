@@ -14,11 +14,9 @@
 
             if(password_verify($_POST['pass'], $user['pass'])) {
                 $_SESSION['id_petugas'] = $user['id_petugas'];
-                header('Location: ' . BASE_URL . '/admin/');
-                exit;
-            } else {
-                Flasher::setFlash(' Salah', ' !', 'bg-red-400');
-                header('Location: ' . BASE_URL . '/home/');
+                $_SESSION['nama'] = $user['nama'];
+                $_SESSION['role'] = $user['jabatan'];
+                header('Location: ' . BASE_URL . '/admin');
                 exit;
             }
         }
